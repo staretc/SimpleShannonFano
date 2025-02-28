@@ -16,7 +16,7 @@ namespace ShannonFanoConsole
             string path;
             int menuItem = ShowMenu();
 
-            while(menuItem != 4)
+            while(menuItem != 5)
             {
                 switch(menuItem)
                 {
@@ -38,6 +38,7 @@ namespace ShannonFanoConsole
                         }
                         File.WriteAllText(path, shannonFano.EncodeString());
                         Console.WriteLine("Успешно закодировано!");
+                        Console.WriteLine($"Степень сжатия текста: {shannonFano.CompressionRatio}");
                         break;
                     case 2:
                         Console.Write("Введите путь к файлу: ");
@@ -69,6 +70,14 @@ namespace ShannonFanoConsole
                             Console.WriteLine($"[{pair.Key}] - {pair.Value}");
                         }
                         break;
+                    case 4:
+                        if (shannonFano.EncodingDictionary.Count == 0)
+                        {
+                            Console.WriteLine("Сначала закодируйте строку!");
+                            break;
+                        }
+                        Console.WriteLine($"Степень сжатия текста: {shannonFano.CompressionRatio}");
+                        break;
                     default:
                         Console.WriteLine("Пожалуйста, выберите корректный пункт меню!");
                         break;
@@ -82,7 +91,8 @@ namespace ShannonFanoConsole
             string[] menu = { "1. Закодировать строку",
             "2. Декодировать строку",
             "3. Показать пары символ-ключ",
-            "4. Выход"
+            "4. Показать степень сжатия",
+            "5. Выход"
             };
             int currentMenuItem = 0;
             ConsoleKeyInfo cki;
@@ -111,8 +121,6 @@ namespace ShannonFanoConsole
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     return currentMenuItem + 1;
                 }
-
-
             }
             while (true);
         }
