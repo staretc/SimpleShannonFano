@@ -57,6 +57,7 @@ namespace ShannonFanoAlgorithm
                 sb.Append(EncodingDictionary[lexem]);
                 outputTextBitsCount += EncodingDictionary[lexem].Length;
             }
+            CompressionRatio = inputTextBitsCount / outputTextBitsCount;
             return sb.ToString();
         }
         /// <summary>

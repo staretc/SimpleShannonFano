@@ -90,7 +90,7 @@ namespace ShannonFanoConsole
         {
             string[] menu = { "1. Закодировать строку",
             "2. Декодировать строку",
-            "3. Показать пары символ-ключ",
+            "3. Показать пары символ-код",
             "4. Показать степень сжатия",
             "5. Выход"
             };
@@ -133,7 +133,7 @@ namespace ShannonFanoConsole
         {
             // Путь не должен содержать недопустимые символы, должен быть абсолютьным и по данному пути должен существовать файл
             return path.IndexOfAny(Path.GetInvalidPathChars()) == -1 &&
-                   Path.IsPathRooted(path) &&
+                   //Path.IsPathRooted(path) &&
                    File.Exists(path);
         }
     }
