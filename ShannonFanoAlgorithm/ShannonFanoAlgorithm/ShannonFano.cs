@@ -28,7 +28,7 @@ namespace ShannonFanoAlgorithm
         /// <summary>
         /// Степень сжатия кодировки
         /// </summary>
-        public int CompressionRatio { get; private set; }
+        public float CompressionRatio { get; private set; }
         #endregion
 
         #region Constructors
@@ -57,7 +57,7 @@ namespace ShannonFanoAlgorithm
                 sb.Append(EncodingDictionary[lexem]);
                 outputTextBitsCount += EncodingDictionary[lexem].Length;
             }
-            CompressionRatio = inputTextBitsCount / outputTextBitsCount;
+            CompressionRatio = (float)inputTextBitsCount / outputTextBitsCount;
             return sb.ToString();
         }
         /// <summary>
